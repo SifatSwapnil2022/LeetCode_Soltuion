@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+        int m =mat.size(), n=mat[0].size( );
+        
+        vector<pair <int,int> >soldier_count(m);
+        for(int i=0 ; i<m ; i++){
+          int count=0;
+          for(int j=0 ; j<n ; j++){
+            count = count + mat[i][j];
+          }
+          soldier_count[i]={count,i} ;
+
+        }
+        sort(soldier_count.begin(),soldier_count.end());
+        vector<int>ans;
+        for(int i =0;i<k;i++){
+          ans.push_back(soldier_count[i].second);
+        }
+        return ans;
+    }
+};
